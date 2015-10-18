@@ -1,42 +1,41 @@
 ! setting transparency
-!urxvt*depth: 32
-!urxvt*background: rgba:0000/0000/0200/c800
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0200/c800
 
 !Xcursor.theme:    Vanilla-DMZ-AA
+! New theme! Kasasomething!
+URxvt.background:               #1b1b1b
+URxvt.foreground:               #FFFFFF
+URxvt.colorBD:                  #CFCFCF
+URxvt.colorUL:                  #969696
+URxvt.colorIT:                  #686868
+!Black
+*color0:                        #3D3D3D
+*color8:                        #4D4D4D
+!!Red
+*color1:                        #6673BF
+*color9:                        #899AFF
+!!Green
+*color2:                        #3EA290
+*color10:                       #52AD91
+!!Yellow
+*color3:                        #B0EAD9
+*color11:                       #98C9BB
+!!Blue
+*color4:                        #31658C
+*color12:                       #477AB3
+!!Magenta
+*color5:                        #596196
+*color13:                       #7882BF
+!!Cyan
+*color6:                        #8292B2
+*color14:                       #95A7CC
+!!White
+*color7:                        #C8CACC
+*color15:                       #EDEFF2
+!
 
-!urxvt color scheme:
-!
-!REMOVE IF TRANSPARENCY WORKS
-URxvt*background: #2B2B2B
-URxvt*foreground: #DEDEDE
-!
-URxvt*colorUL: #86a2b0
-!
-!! black
-URxvt*color0  : #2E3436
-URxvt*color8  : #555753
-!! red
-URxvt*color1  : #CC0000
-URxvt*color9  : #EF2929
-!! green
-!URxvt*color2  : #4E9A06
-!URxvt*color10 : #8AE234
-!! yellow
-!URxvt*color3  : #C4A000
-!URxvt*color11 : #FCE94F
-!! blue
-URxvt*color4  : #3465A4
-URxvt*color12 : #729FCF
-!! magenta
-URxvt*color5  : #75507B
-URxvt*color13 : #AD7FA8
-!! cyan (Change to green!)
-URxvt*color2  : #06989A
-URxvt*color10 : #34E2E2
-!! white
-!URxvt*color7  : #D3D7CF
-!URxvt*color15 : #EEEEEC
-!
+
 !!urxvt fonts: 
 !
 URxvt*font: xft:Monospace:pixelsize=10
