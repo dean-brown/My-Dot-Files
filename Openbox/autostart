@@ -1,0 +1,30 @@
+
+# panel
+(sleep 1s && tint2) &
+
+# Set wallpaper
+#(sleep 1s && nitrogen --restore) &
+feh --bg-fill ~/Pictures/winterroad.jpe
+
+# Enable as required
+xbacklight -set 80 &
+#/usr/bin/synclient TouchpadOff=1 &
+#xxkb &
+#setxkbmap us &
+
+# File manager (daemon mode)
+#(sleep 2 && spacefm -d) &
+
+compton &
+numlockx on
+
+# Networking system tray applet
+(sleep 3 && nm-applet) &
+
+# Volume control
+(sleep 3 && volumeicon) &
+
+# Onscreen system stats
+(sleep 2 && conky) &
+
+
