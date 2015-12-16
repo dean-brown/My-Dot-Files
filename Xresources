@@ -1,14 +1,17 @@
-! setting transparency
-urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0200/c800
+!!!!! Xresources file !!!!
+!
+! Uncomment these two lines for transparency with compton
+!urxvt*depth: 32
+!urxvt*background: rgba:0000/0000/0200/c800
 
 !Xcursor.theme:    Vanilla-DMZ-AA
-! New theme! Kasasomething!
-URxvt.background:               #1b1b1b
+! Leave the background as is but change the other colors!
+URxvt.background:               #2f343f
 URxvt.foreground:               #FFFFFF
 URxvt.colorBD:                  #CFCFCF
 URxvt.colorUL:                  #969696
 URxvt.colorIT:                  #686868
+! Color variables
 !Black
 *color0:                        #3D3D3D
 *color8:                        #4D4D4D
@@ -75,3 +78,29 @@ URxvt.keysym.Control-Up: \033[1;5A
 URxvt.keysym.Control-Down: \033[1;5B
 URxvt.keysym.Control-Left: \033[1;5D
 URxvt.keysym.Control-Right: \033[1;5C
+
+
+!!!! Colors need a bit of work but it's getting there
+! Added for rofi
+rofi.opacity: 90
+rofi.width: 75
+rofi.lines: 20
+rofi.columns: 1
+rofi.font: xft:Awesome 9
+rofi.fg: #FFFFFF
+rofi.bg: #09bdf4
+rofi.hlfg: #09bdf4
+rofi.hlbg: #FFFFFF
+rofi.bc: #FFFFFF
+rofi.bw: 2
+rofi.loc: 0
+rofi.padding: 2
+rofi.yoffset: -2
+rofi.xoffset: 0
+rofi.fixed-num-lines: false
+rofi.hmode: false
+rofi.terminal: x-terminal-emulator
+rofi.ssh-set-title: true
+rofi.key: F12
+rofi.rkey: mod1+F2
+rofi.skey: mod1+F3

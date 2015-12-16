@@ -1,35 +1,30 @@
-set $mod Mod4
-# startup applications
-exec --no-startup-id feh --bg-fill ~/Pictures/winterroad.jpe
-exec --no-startup-id volumeicon
-exec --no-startup-id nm-applet
-exec --no-startup-id compton --config /home/floyd/.config/compton/compton.conf -b
-exec --no-startup-id mpd
-exec --no-startup-id numlockx on
+######## i3wm Config File ########
 
-# Set up i3 gaps
-#for_window [class="^.*"] border pixel 0 in your config
+
+set $mod Mod4
+
+#### Startup applications ####
+exec --no-startup-id compton
+exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/deb.png
+exec --no-startup-id numlockx on
+exec --no-startup-id mpd
+
+
+#### Gaps ####
 new_window pixel 3
-gaps inner 20
-gaps outer 8
+#### Gaps are currently turned off (Think i like this more but it's nice to have options)
+#gaps inner 20
+#gaps outer 8
 smart_borders on
 
-# Change the web workspace to have no gaps:
-# set some nice colors      border          (Not corrently working)    
-#client.focused              #5d97fa
-#client.unfocused            #a78edb
-#client.focused_inactive     #a78edb 
-#client.urgent               #d81860
-
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-#font pango:monospace 8
+#### Font ####
 font xft:Awesome 8
-    
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# volume and brighness:
+#### Keybinds ####
+# Brightness and sound (This might not work with pulse)
 bindsym XF86MonBrightnessDown exec xbacklight - 5
 bindsym XF86MonBrightnessUp exec xbacklight + 5
 bindsym XF86AudioLowerVolume exec amixer set Master 5%- unmute
@@ -38,16 +33,24 @@ bindsym XF86AudioMute exec amixer set Master toggle
 
 # start a terminal
 bindsym $mod+Return exec urxvt
-# start firefox
-bindsym $mod+b exec firefox
-# start thunar
-bindsym $mod+t exec thunar
+
+# Start a browser
+bindsym $mod+B exec firefox
+
+# Start a file manager
+bindsym $mod+T exec thunar
+
+# Start a text editor
+#### Try to see if i can bind $mod + A to atom!!!
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec dmenu_run
+
+#### Changed to rofi ####
+bindsym $mod+d exec rofi -show run
 
 # change focus
 bindsym $mod+j focus left
@@ -80,7 +83,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -100,25 +103,23 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 
-# Set up named Workspaces:
-set $tag1 "Dev"
-set $tag2 "Web"
-set $tag3 "Media"
-set $tag4 "Social"
-# switch to workspace
-bindsym $mod+1 workspace $tag1
-bindsym $mod+2 workspace $tag2
-bindsym $mod+3 workspace $tag3
-bindsym $mod+4 workspace $tag4
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $tag1
-bindsym $mod+Shift+2 move container to workspace $tag2
-bindsym $mod+Shift+3 move container to workspace $tag3
-bindsym $mod+Shift+4 move container to workspace $tag4
+#### Custom Workspaces ####
+set $Desktop1 " Coding"
+set $Desktop2 " Browser"
+set $Desktop3 " Media"
+set $Desktop4 " VirtualBox"
 
-# Not working!!!
-#workspace <"web"> gaps inner <0>
-#workspace <"web"> gaps outer <0>
+# Switch to workspace
+bindsym $mod+1 workspace $Desktop1
+bindsym $mod+2 workspace $Desktop2
+bindsym $mod+3 workspace $Desktop3
+bindsym $mod+4 workspace $Desktop4
+
+# Move window to workspace
+bindsym $mod+Shift+1 move container to workspace $Desktop1
+bindsym $mod+Shift+2 move container to workspace $Desktop2
+bindsym $mod+Shift+3 move container to workspace $Desktop3
+bindsym $mod+Shift+4 move container to workspace $Desktop4
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -126,10 +127,6 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-# Lock the screen using shellscript magic
-bindsym Control+mod1+l exec sh ~/.i3/i3lock.sh
-# Take a screenshot
-bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/'
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -157,27 +154,38 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#Lemonbar
-#exec --no-startup-id ~/.scripts/lemonbar.sh | lemonbar
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+### Color variables (Edit colors here) Inactive BG text used to be: #31658C
+set $bg-color			#09bdf4
+set $inactive-bg-color		#2f343f	
+set $text-color			#EDEFF2
+set $inactive-text-color	#C8CACC
+set $urgent-bg-color 		#52AD91
+
+
+# window colors (Definitely need to change these!!!!)
+# #                       border              background         text                 indicator
+client.focused            $bg-color           $bg-color          $text-color          #8292B2
+client.urgent             $urgent-bg-color    $urgent-bg-color   $text-color          #8292B2
+
+####### Not using these atm Look at changing this later!!
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+#client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+
+# Should turn off borders (Don't think this works while gaps enabled!)
+#hide_edge_borders both
+
+#### Bar ####
 bar {
-
-    # WORK ON THESE TOMORROW!!!
-    colors {
-        #Whole color settings
-        background #000000
-        statusline #ffffff
-        separator #666666
-
-        #Type               border background font
-        focused_workspace #a78edb #a78edb #f3ebe2
-        active_workspace #333333 #333333 #f3ebe2
-        inactive_workspace #5d97fa #5d97fa #f3ebe2
-    }
-	
-    position top
-    # Setting a custom i3status
-    status_command i3status -c ~/.config/i3/i3status.conf
+        position top
+	# Custom i3blocks config
+	status_command i3blocks -c ~/.i3/i3blocks.conf
+	# Set the colors on the left of the bar
+	colors {
+	    background $inactive-bg-color
+    	    #################	#border             background         text
+	    focused_workspace  	$bg-color          $bg-color          $text-color
+	    inactive_workspace 	$inactive-bg-color $inactive-bg-color $inactive-text-color
+	    urgent_workspace   	$urgent-bg-color   $urgent-bg-color   $text-color
+	}
 }
